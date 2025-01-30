@@ -47,6 +47,13 @@ group :development, :test do
 
   # .env file
   gem 'dotenv-rails'
+
+  gem 'rspec-rails'
+  
+  # swagger
+  gem 'rswag-api'
+  gem 'rswag-ui'
+  gem 'rswag-specs'
 end
 
 

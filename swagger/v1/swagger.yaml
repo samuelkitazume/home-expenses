@@ -1,0 +1,166 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/categories":
+    get:
+      summary: Retrieves all categories
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: categories found
+    post:
+      summary: Creates a category
+      tags:
+      - Categories
+      parameters: []
+      responses:
+        '201':
+          description: category created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/categories/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: ID of the category
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a specific category
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: category found
+        '404':
+          description: category not found
+    patch:
+      summary: Updates a category
+      tags:
+      - Categories
+      parameters: []
+      responses:
+        '200':
+          description: category updated
+        '422':
+          description: invalid request
+        '404':
+          description: category not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+    delete:
+      summary: Deletes a category
+      tags:
+      - Categories
+      responses:
+        '204':
+          description: category deleted
+        '404':
+          description: category not found
+  "/items":
+    get:
+      summary: Retrieves all items
+      tags:
+      - Items
+      responses:
+        '200':
+          description: items found
+    post:
+      summary: Creates an item
+      tags:
+      - Items
+      parameters: []
+      responses:
+        '201':
+          description: item created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                  format: float
+              required:
+              - name
+              - price
+  "/items/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: ID of the item
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a specific item
+      tags:
+      - Items
+      responses:
+        '200':
+          description: item found
+        '404':
+          description: item not found
+    patch:
+      summary: Updates an item
+      tags:
+      - Items
+      parameters: []
+      responses:
+        '200':
+          description: item updated
+        '422':
+          description: invalid request
+        '404':
+          description: item not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                  format: float
+    delete:
+      summary: Deletes an item
+      tags:
+      - Items
+      responses:
+        '204':
+          description: item deleted
+        '404':
+          description: item not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
